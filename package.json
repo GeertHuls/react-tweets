@@ -7,7 +7,6 @@
   "private": true,
   "scripts": {
     "start": "node ./bin/www",
-    "watch": "watchify app.js -o public/js/bundle.js -v",
     "browserify": "browserify app.js | uglifyjs > public/js/bundle.js",
     "build": "npm run browserify "
   },
@@ -27,14 +26,15 @@
     "socket.io": "^1.1.0"
   },
   "devDependencies": {
+    "browserify": "~6.0.3",
     "grunt": "~0.4.5",
-    "grunt-develop": "~0.4.0",
     "grunt-contrib-watch": "~0.6.1",
+    "grunt-develop": "~0.4.0",
+    "grunt-watchify": "^0.1.0",
+    "load-grunt-tasks": "~1.0.0",
+    "reactify": "~0.14.0",
     "request": "~2.51.0",
     "time-grunt": "~1.0.0",
-    "load-grunt-tasks": "~1.0.0",
-    "browserify": "~6.0.3",
-    "reactify": "~0.14.0",
     "uglify-js": "~2.4.15",
     "watchify": "~2.0.0"
   },
