@@ -4,7 +4,7 @@ var express = require('express'),
     logger = require('morgan'),
     cookieParser = require('cookie-parser'),
     bodyParser = require('body-parser'),
-    mongoose = require('mongoose'),
+    //mongoose = require('mongoose'),
     routes = require('./routes/index'),
     users = require('./routes/user');
 
@@ -15,7 +15,7 @@ app.set('view engine', 'jade');
 
 app.disable('etag');
 
-mongoose.connect('mongodb://localhost:28017/react-tweets');
+//mongoose.connect('mongodb://localhost:28017/react-tweets');
 
 // app.use(favicon(__dirname + '/public/img/favicon.ico'));
 app.use(logger('dev'));
