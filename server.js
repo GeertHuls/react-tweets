@@ -1,12 +1,12 @@
+
 var express = require('express'),
     path = require('path'),
     favicon = require('serve-favicon'),
     logger = require('morgan'),
     cookieParser = require('cookie-parser'),
     bodyParser = require('body-parser'),
-    //mongoose = require('mongoose'),
-    routes = require('./routes/index'),
-    users = require('./routes/user');
+    mongoose = require('mongoose'),
+    routes = require('./routes/index');
 
 var app = express();
 
@@ -15,7 +15,8 @@ app.set('view engine', 'jade');
 
 app.disable('etag');
 
-//mongoose.connect('mongodb://localhost:28017/react-tweets');
+// Connect to our mongo database
+mongoose.connect('mongodb://localhost/react-tweets');
 
 // app.use(favicon(__dirname + '/public/img/favicon.ico'));
 app.use(logger('dev'));
@@ -27,7 +28,6 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', routes);
-app.use('/users', users);
 
 /// catch 404 and forward to error handler
 app.use(function(req, res, next) {
@@ -61,6 +61,5 @@ app.use(function(err, req, res, next) {
         title: 'error'
     });
 });
-
 
 module.exports = app;
