@@ -1,5 +1,9 @@
 extends layout
 
 block content
-  h1= title
-  p Welcome to #{title}
+	section(id="react-app").
+		#{markup}
+
+//- <section id="react-app">{{{ markup }}}</div>
+//- <script id="initial-state" type="application/json">{{{state}}}</script>
+
