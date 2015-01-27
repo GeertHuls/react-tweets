@@ -7,25 +7,20 @@ module.exports = {
 
   index: function(req, res) {
 
-    res.render('index', { markup: 'test' });
-
     // Call static model method to get tweets in the db
-    // Tweet.getTweets(0,0, function(tweets, pages) {
+    Tweet.getTweets(0,0, function(tweets, pages) {
 
-    //   // Render React to a string, passing in our fetched tweets
-    //   var markup = React.renderComponentToString(
-    //     TweetsApp({
-    //       tweets: tweets
-    //     })
-    //   );
+      // Render React to a string, passing in our fetched tweets
+      var markup = React.renderComponentToString(
+        TweetsApp({
+          tweets: tweets
+        })
+      );
 
-    //   // Render our 'home' template
-    //   res.render('home', {
-    //     markup: markup, // Pass rendered react markup
-    //     state: JSON.stringify(tweets) // Pass current state to client side
-    //   });
-
-    //});
+      res.render('index', {
+        markup: markup, // Pass rendered react markup
+      });
+    });
   },
 
   page: function(req, res) {
