@@ -19,6 +19,7 @@ module.exports = {
 
       res.render('index', {
         markup: markup, // Pass rendered react markup
+        state: JSON.stringify(tweets) // Pass current state to client side
       });
     });
   },
