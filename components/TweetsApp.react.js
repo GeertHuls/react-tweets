@@ -2,6 +2,7 @@
 
 var React = require('react');
 var Tweets = require('./Tweets.react.js');
+var NotificationBar = require('./NotificationBar.react.js');
 
 // Export the TweetsApp component
 module.exports = TweetsApp = React.createClass({
@@ -29,6 +30,7 @@ module.exports = TweetsApp = React.createClass({
     return (
       <div className="tweets-app">
         <Tweets tweets={this.state.tweets} />
+        <NotificationBar count={this.state.count} />
       </div>
     )
 
