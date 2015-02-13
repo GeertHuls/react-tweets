@@ -9,6 +9,8 @@ module.exports = function (grunt) {
   require('load-grunt-tasks')(grunt);
 
   var reloadPort = 35729, files;
+ 
+  grunt.loadNpmTasks('grunt-watchify');
 
   grunt.initConfig({
     pkg: grunt.file.readJSON('package.json'),
@@ -53,14 +55,13 @@ module.exports = function (grunt) {
           livereload: reloadPort
         }
       }
-      // ,
-      // watchify: {
-      //   example: {
-      //     src: './app.js',
-      //     dest: 'public/js/bundle.js'
-      //   },
-      // }
-    }
+    },
+    watchify: {
+      example: {
+        src: './app.js',
+        dest: 'public/js/bundle.js'
+      },
+    },
   });
 
   grunt.config.requires('watch.server.files');
@@ -83,6 +84,7 @@ module.exports = function (grunt) {
   });
   
   grunt.registerTask('default', [
+    'watchify',
     'develop',
     'watch'
   ]);
