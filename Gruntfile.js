@@ -11,6 +11,7 @@ module.exports = function (grunt) {
   var reloadPort = 35729, files;
  
   grunt.loadNpmTasks('grunt-watchify');
+  grunt.loadNpmTasks('grunt-contrib-uglify');
 
   grunt.initConfig({
     pkg: grunt.file.readJSON('package.json'),
@@ -37,9 +38,10 @@ module.exports = function (grunt) {
       },
       js: {
         files: ['public/js/*.js'],
+        tasks: ['uglify'],
         options: {
           livereload: reloadPort
-        }
+        },
       },
       css: {
         files: [
@@ -57,11 +59,18 @@ module.exports = function (grunt) {
       }
     },
     watchify: {
-      example: {
+      reactapp: {
         src: './app.js',
         dest: 'public/js/bundle.js'
       },
     },
+    uglify: {
+      browserifybundle: {
+        files: {
+          'public/js/bundle.js': ['public/js/bundle.js']
+        }
+      }
+    }
   });
 
   grunt.config.requires('watch.server.files');
